@@ -1,0 +1,195 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dktrdr}[2017/6/19 Daniel Rubenson's custom LaTeX style]
+
+\usepackage{setspace}
+\usepackage{amssymb, natbib}
+\usepackage[tbtags]{amsmath}
+\usepackage{rotating}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{comment}
+\usepackage{appendix}
+\usepackage{verbatim}
+%\usepackage[margin=1.1in]{geometry}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\definecolor{cyan}{HTML}{2aa198}
+
+\usepackage{hypernat}
+\usepackage{ctable}
+\newcommand{\revertstretch}{\setstretch{1.3}}
+\revertstretch
+
+
+
+\usepackage{pifont} 
+\usepackage{MnSymbol} 
+\usepackage{phaistos}
+
+
+\usepackage[pdftex, pdftitle={}, pdfauthor={}, colorlinks=true, urlcolor=cyan, linkcolor=cyan, citecolor=cyan, raiselinks=false, hyperfootnotes=true]{hyperref}
+
+\newcommand{\dee}{{\rm d}}
+\newcommand{\Ai}{A\"{i}zerman}
+\newcommand{\Top}{{\tt Top}}
+\newcommand{\s}{s}
+\newcommand{\tee}{t}
+\newcommand{\uu}{u}
+\newcommand{\vv}{v}
+\newcommand{\w}{w}
+\newcommand{\x}{x}
+\newcommand{\y}{y}
+\newcommand{\z}{z}
+\newcommand{\N}{N}
+\newcommand{\F}{F}
+\newcommand{\T}{T}
+\newcommand{\A}{A}
+\newcommand{\Co}{{\tt Co}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\Path}{{\tt Path}}
+\newcommand{\Length}{{\tt Length}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\U}{\emph{U}}
+\newcommand{\PF}{\emph{PF}}
+\newcommand{\CF}{\emph{CF}}
+\newcommand{\argmax}{\mathop{{\rm argmax}\ }}
+\newcommand{\argmin}{\mathop{{\rm argmin}\ }}
+\newcommand{\Topset}{{\tt Top}}
+\newcommand{\p}{^{\prime}}
+\newcommand{\pd}{\mathcal{D}}
+\newcommand{\Q}{\Pi}
+
+\newcommand{\tab}{\\ \mbox{\;\;\;\;\;} $\bullet$  \mbox{\;\;\;}}
+\newcommand{\newtab}{\mbox{\;\;\;\;\;} $\bullet$  \mbox{\;\;\;}}
+\newcommand{\subtab}{\\ \mbox{\;\;\;\;\;\;\;\;\;\;\;\;\;\;} $\Box$ \mbox{\;\;\;}}
+\newcommand{\newsubtab}{\mbox{\;\;\;\;\;\;\;\;\;\;\;\;\;\;} $\Box$ \mbox{\;\;\;}}
+\newcommand{\subsubtab}{\\ \mbox{\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;} \ding{44} \mbox{\;\;\;}}
+\newcommand{\newsubsubtab}{\mbox{\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;} \ding{44} \mbox{\;\;\;}}
+
+\RequirePackage{ifthen}[1994/06/01]
+
+\newboolean{separate}
+\newboolean{bysection}
+\newboolean{numfirst}
+
+\DeclareOption{separate}{\setboolean{separate}{true}}
+\DeclareOption{bysection}{\setboolean{bysection}{true}}
+\DeclareOption{numfirst}{\setboolean{numfirst}{true}}
+
+\ProcessOptions
+
+\RequirePackage{theorem}
+
+\ifthenelse{\boolean{numfirst}}
+{\theoremstyle{change}}
+{\relax}
+
+\ifthenelse{\boolean{bysection}}
+{\newtheorem{theorem}{Theorem}[section]}
+{\newtheorem{theorem}{Theorem}}
+
+\ifthenelse{\boolean{separate}}
+{
+\ifthenelse{\boolean{bysection}}
+{
+\newtheorem{question}{Question}[section]
+\newtheorem{condition}{Condition}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+{\theorembodyfont{\normalfont}\newtheorem{ex@mple}{Example}[section]}
+{\theorembodyfont{\normalfont}\newtheorem{rem@rk}{Remark}[section]}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conclusion}{Conclusion}[section]
+}
+{
+\newtheorem{question}{Question}
+\newtheorem{condition}{Condition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{assumption}{Assumption}
+\newtheorem{claim}{Claim}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+{\theorembodyfont{\normalfont}\newtheorem{ex@mple}{Example}}
+{\theorembodyfont{\normalfont}\newtheorem{rem@rk}{Remark}}
+\newtheorem{exercise}{Exercise}
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conclusion}{Conclusion}
+}
+}
+{
+\newtheorem{question}[theorem]{Question}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+{\theorembodyfont{\normalfont}\newtheorem{ex@mple}[theorem]{Example}}
+{\theorembodyfont{\normalfont}\newtheorem{rem@rk}[theorem]{Remark}}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conclusion}[theorem]{Conclusion}
+}
+
+% result (named theorem) environment; no numbers!! 
+%		unless numfirst specified
+\ifthenelse{\boolean{numfirst}}
+{\newenvironment{result}[1][Theorem]{\refstepcounter{theorem}\trivlist
+      \item[\hskip \labelsep\theorem@headerfont
+       \thetheorem\ #1]\itshape}{\endtrivlist}}
+{\newenvironment{result}[1][Theorem]{\trivlist
+      \item[\hskip \labelsep\theorem@headerfont
+       #1]\itshape}{\endtrivlist}}
+
+
+% Proof environment
+\newenvironment{proof}[1][Proof]{\trivlist\item[\hskip\labelsep \textit{#1}:]}{\kcbendproofskip\qedmark\endtrivlist}
+
+\newenvironment{solution}[1][Solution]{\trivlist\item[\hskip\labelsep \textit{#1}:]}{\kcbendproofskip\solutionmark\endtrivlist}
+
+%     \kcbendproofskip cf. p.106 of the TeXbook ( the \signed macro )
+%     the \vskip was added in case the example ended with an \endlist
+\newcommand{\kcbendproofskip}[1]{{\unskip\ifvmode\vskip -\baselineskip\fi\nobreak\penalty50\hskip1em\hbox{}\nobreak\hfill{#1}\penalty50}}
+
+\newcommand{\goldenrectangle}{\rule{1ex}{1.61803ex}}
+\newcommand{\qedmark}{\goldenrectangle}
+\newcommand{\solutionmark}{\goldenrectangle}
+
+% Example environment
+\newenvironment{example}{\begin{ex@mple}}{\kcbendproofskip\examplemark\end{ex@mple}}
+\newcommand{\examplemark}{$\triangle$}
+
+% Remark environment
+\newenvironment{remark}{\begin{rem@rk}}{\end{rem@rk}}
+
+\let\la=\lesssim     
+\let\ga=\gtrsim
+\def\case#1#2{\hbox{$\frac{#1}{#2}$}}
+\def\slantfrac#1#2{\hbox{$\,^#1\!/_#2$}}
+\def\onehalf{\slantfrac{1}{2}}
+\def\threehalves{\slantfrac{3}{2}}
+\def\onethird{\slantfrac{1}{3}}
+\def\twothirds{\slantfrac{2}{3}}
+\def\onequarter{\slantfrac{1}{4}}
+\def\threequarters{\slantfrac{3}{4}}
+
+
+\endinput

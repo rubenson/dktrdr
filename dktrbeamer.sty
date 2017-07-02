@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dktrbeamer}[2017/6/19 Daniel Rubenson's custom beamer style]
+
+%\usepackage{amsthm}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{pictexwd}
+\usepackage{pdftricks}
+\usepackage{graphicx}
+\usepackage{utopia}
+\usepackage{ctable}
+\usepackage{tikz}
+\usetikzlibrary{fit,positioning}
+\newtheorem{proposition}{Proposition}
+
+%\setbeamercolor{math text}{fg=RoyalPurple}
+
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\mode<presentation>
+%\usetheme{lankton-keynote}
+
+%\usetheme{amsterdam} 
+%\usetheme{torino} 
+
+\usefonttheme{structuresmallcapsserif,serif} 
+
+\usetheme{Pittsburgh}
+
+%\useoutertheme{miniframes}
+%\usecolortheme{crane}
+\usecolortheme[accent=blue]{solarized}
+%\useinnertheme[shadow=true]{rounded}
+%\usecolortheme{orchid}
+
+%\setbeamercolor{normal text}{fg=white,bg=black} 
+
+
+\usepackage{graphicx}
+
+%\usefonttheme{serif}
+
+
+
+\setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+
+%\setupctable{doinside=\footnotesize}
